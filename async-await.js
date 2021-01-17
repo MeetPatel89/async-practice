@@ -50,8 +50,16 @@ function notAsyncWork() {
   const processResponse = processRequest(response);
   console.log(processResponse);
 }
-notAsyncWork();
-doWork();
-console.log('Asynchronous code example')
 
+ async function f() {
+  let promise = new Promise((res, rej) => {
+    setTimeout(() => res('Done'), 2000);
+  });
 
+  let result = await promise;
+  console.log(result);
+  console.log('This will log last!')
+}
+
+f();
+console.log('Asynchronous code example');
